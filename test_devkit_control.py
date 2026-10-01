@@ -23,7 +23,7 @@ import socket
 import time
 import sys
 
-DEVKIT_IP = "192.168.137.218"
+DEVKIT_IP = "192.168.137.227"
 DEVKIT_PORT = 8888
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

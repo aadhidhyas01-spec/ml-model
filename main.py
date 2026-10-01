@@ -54,6 +54,8 @@ def find_best_weights(preferred_weights: str = None) -> str:
     """Find the best available model weights."""
     candidates = [
         preferred_weights,
+        str(ROOT_DIR / "weights" / "best_trash_yolov8m.pt"),
+        str(ROOT_DIR / "runs" / "detect" / "trash_max_accuracy" / "weights" / "best.pt"),
         str(ROOT_DIR / "runs" / "detect" / "trash_yolov8m_ultra_acc" / "weights" / "best.pt"),
         str(ROOT_DIR / "runs" / "detect" / "trash_yolov8m_high_acc" / "weights" / "best.pt"),
         str(ROOT_DIR / "runs" / "detect" / "trash_finetune" / "weights" / "best.pt"),

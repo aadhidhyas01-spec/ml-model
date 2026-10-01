@@ -12,12 +12,12 @@ echo   - Press '+' or '-' to adjust confidence threshold
 echo   - Press 's' to save a snapshot photo
 echo.
 
-python main.py --mode webcam --weights runs/detect/trash_yolov8m_ultra_acc/weights/best.pt --conf 0.50
+python -s main.py --mode webcam --weights weights/best_trash_yolov8m.pt --conf 0.50
 
 if errorlevel 1 (
     echo.
     echo Testing with secondary camera ID 1...
-    python main.py --mode webcam --weights runs/detect/trash_yolov8m_ultra_acc/weights/best.pt --conf 0.50 --camera_id 1
+    python -s main.py --mode webcam --weights weights/best_trash_yolov8m.pt --conf 0.50 --camera_id 1
 )
 
 pause

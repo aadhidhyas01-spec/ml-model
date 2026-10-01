@@ -6,5 +6,5 @@ echo   Manual YOLOv8 Trash Detection Tester (Laptop Webcam)
 echo   GPU: NVIDIA GeForce RTX 4060
 echo =========================================================================
 echo.
-python test_manual_ml_cam.py --source 0
+python -s test_manual_ml_cam.py --source 0
 pause

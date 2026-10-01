@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.part
+*.npy
 
 # Distribution / packaging
 build/
@@ -40,15 +41,9 @@ yolov8m.pt
 yolov8n.pt
 
 # Intermediate training checkpoints and secondary runs
-*last.pt
-runs/detect/trash_finetune/
-runs/detect/trash_yolov8m_high_acc/
-runs/detect/predict_results/
-runs/detect/test_predictions/
-runs/detect/val/
-runs/detect/val-2/
-runs/detect/val-3/
-runs/detect/val-4/
-runs/detect/val_evaluation/
-runs/detect/val_evaluation-2/
-runs/detect/runs/
+*.pt
+!weights/best_trash_yolov8m.pt
+runs/
+scratch/
+*.cache
+

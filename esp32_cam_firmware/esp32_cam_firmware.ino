@@ -113,6 +113,8 @@ static esp_err_t stream_handler(httpd_req_t *req) {
     if (res != ESP_OK) {
       break;
     }
+    // Yield CPU to FreeRTOS Wi-Fi stack to prevent packet congestion and stream freezing
+    vTaskDelay(3 / portTICK_PERIOD_MS);
   }
   return res;
 }
@@ -123,6 +125,8 @@ void startCameraServer() {
   config.ctrl_port = 32768;
   config.stack_size = 8192; // 8KB stack prevents FreeRTOS stack overflow during stream
   config.max_uri_handlers = 8;
+  config.recv_wait_timeout = 5;
+  config.send_wait_timeout = 5;
 
   httpd_uri_t stream_uri = {
     .uri       = "/stream",
@@ -178,8 +182,11 @@ void setup() {
   // Frame settings (VGA 640x480 gives optimal aspect ratio for YOLOv8)
   if (psramFound()) {
     config.frame_size = FRAMESIZE_VGA;
-    config.jpeg_quality = 12; // 0-63 (lower number = higher quality)
+    config.jpeg_quality = 14; // Optimal quality-to-bandwidth ratio (prevents Wi-Fi packet drops)
     config.fb_count = 2;
+    #if defined(CAMERA_GRAB_LATEST)
+    config.grab_mode = CAMERA_GRAB_LATEST; // Always grab the newest frame; discard stale backlog
+    #endif
   } else {
     config.frame_size = FRAMESIZE_QVGA; // 320x240 fits reliably in internal RAM if PSRAM is disabled
     config.jpeg_quality = 15;

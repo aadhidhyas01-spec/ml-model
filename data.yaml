@@ -2,10 +2,19 @@ path: C:/Users/dhara/Downloads/yolov8-trash-detections.v1i.yolov8
 train: train/images
 val: valid/images
 test: valid/images
-
-nc: 10
-names: ['battery', 'can', 'cardboard', 'drink carton', 'glass bottle', 'paper', 'plastic bag', 'plastic bottle', 'plastic bottle cap', 'pop tab']
-
+nc: 11
+names:
+- battery
+- can
+- cardboard
+- drink carton
+- glass bottle
+- paper
+- plastic bag
+- plastic bottle
+- plastic bottle cap
+- pop tab
+- cup
 roboflow:
   workspace: aadhidhya-s
   project: yolov8-trash-detections-md3pu
